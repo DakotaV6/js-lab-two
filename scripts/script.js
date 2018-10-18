@@ -30,9 +30,8 @@ class AddressBook {
         this.contacts.splice(index, 1);
     }
     print() {
-        this.contacts.forEach((person) => {
+        this.contacts.forEach(person => {
             console.log(`Name: ${person.name} | Email: ${person.email} | Phone: ${person.phone} | Relation: ${person.relation}`);
-
         })
     }
 }
