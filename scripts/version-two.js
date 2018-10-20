@@ -1,10 +1,5 @@
 "use strict";
 
-// 3. Add a display method to the AddressBook. This method must update the DOM to display all the contacts from the AddressBook.
-// 4. Call display when the page first loads to show the contacts.
-// 5. Create a delete button next to each contact, clicking this button will call the deleteAt method on the AddressBook and then call display to update the DOM.
-// 6. Create a form on the page. When the form is submitted, call the add method on the AddressBook and then call display to update the DOM.
-
 // Creates Address Book Object
 class AddressBook {
     constructor() {
@@ -29,12 +24,15 @@ class AddressBook {
             }
         ];
     }
+    // Adds the contact to array
     add(info) {
         this.contacts.push(info);
     }
+    // Deletes from array
     deleteAt(index) {
         this.contacts.splice(index, 1);
     }
+    // Loads contacts
     display() {
         // Loops through the "contacts" array and adds all contacts to the contactRow container.
         const container = document.querySelector(".contactRow");
@@ -45,10 +43,10 @@ class AddressBook {
             let newContact = document.createElement("div");
             newContact.classList.add("contact");
             newContact.innerHTML =
-                `<p class="name">` + `Name: ${contact.name}` + `</p>` +
-                `<p class="email">` + `Email: ${contact.email}` + `</p>` +
-                `<p class="phone">` + `Phone: ${contact.phone}` + `</p>` +
-                `<p class="relation">` + `Relation: ${contact.relation}` + `</p>` +
+                `<p>` + `Name: ${contact.name}` + `</p>` +
+                `<p>` + `Email: ${contact.email}` + `</p>` +
+                `<p>` + `Phone: ${contact.phone}` + `</p>` +
+                `<p>` + `Relation: ${contact.relation}` + `</p>` +
                 `<div class="trashCan-circle">` +
                 `<svg class="trashCan" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">` +
                 `<path d="M6 19c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7H6v12zM19 4h-3.5l-1-1h-5l-1 1H5v2h14V4z" />` +
@@ -61,6 +59,7 @@ class AddressBook {
         // Adds a click event to all trashCan-circle elements
         let trashIcon = document
             .querySelectorAll(".trashCan-circle");
+        // for each of the icons, will add the delete method (passing through the value of i for and index) and display method (to refresh the screen with updated contacts).
         for (let i = 0; i < trashIcon.length; i++) {
             trashIcon[i].addEventListener("click", () => {
                 addressBook.deleteAt(i);
@@ -73,7 +72,7 @@ class AddressBook {
 // Initializes New Address Book
 const addressBook = new AddressBook();
 
-//Establishes Contact
+//Establishes Contact object
 class Contact {
     constructor(name, email, phone, relation) {
         this.name = name;
@@ -83,7 +82,13 @@ class Contact {
     }
 }
 
-// Adds listener to "add" button. On click, inputs will be added to contacts array as a new contact.
+function clearFields() {
+
+
+};
+
+
+// Adds listener to "add" button. On click, inputs will be added to contacts array as a new contact object.
 document
     .querySelector(".addBtn")
     .addEventListener("click", () => {
@@ -93,11 +98,16 @@ document
         let phone = inputs[2].value;
         let relation = inputs[3].value;
         addressBook.add(new Contact(name, email, phone, relation));
+        // Clears input values
+        inputs[0].value = "";
+        inputs[1].value = "";
+        inputs[2].value = "";
+        inputs[3].value = "";
         addressBook.display();
     });
 
 
 
 
-
-    window.onload = addressBook.display();
+// Will load contacts as soon as page is loaded.
+window.onload = addressBook.display();
