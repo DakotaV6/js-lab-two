@@ -11,20 +11,32 @@
 </head>
 
 <body>
-    <div class="layer">
+    <div class="layer"></div>
+
+    <div class="main-container">
         <form class="address-form">
             <p class="title">My Contacts</p>
-            <input type="text" class="address-input" placeholder="Name">
-            <input type="text" class="address-input" placeholder="Email">
-            <input type="text" class="address-input" placeholder="Phone">
-            <select name="relation" class="address-input">
-                <option value="family">Family</option>
-                <option value="friend">Friend</option>
-                <option value="colleague">Colleague</option>
-                <option value="other">Other</option>
-            </select>
-            <button type="button">Add</button>
+            <input type="text" class="address-input form-parts" placeholder="Name">
+            <input type="text" class="address-input form-parts" placeholder="Email">
+            <input type="text" class="address-input form-parts" placeholder="Phone">
+            <input type="text" class="address-input form-parts" placeholder="Relation">
+            <button type="button" class="form-parts addBtn">Add</button>
         </form>
+
+        <div class="contactRow">
+            <div class="contact">
+                <p id="name">Name: Dakota Vradenburg</p>
+                <p id="email">Email: dakota.vradenburg@gmail.com</p>
+                <p id="phone">Phone: 888-888-8888</p>
+                <p id="relation">Relation: Family </p>
+                <div class="trashCan-circle" onclick="">
+                    <svg class="trashCan" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                        <path d="M6 19c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7H6v12zM19 4h-3.5l-1-1h-5l-1 1H5v2h14V4z" />
+                        <path d="M0 0h24v24H0z" fill="none" /></svg>
+                </div>
+                <div class="clearfix"></div>
+            </div>
+        </div>
     </div>
 
 
