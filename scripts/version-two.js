@@ -41,6 +41,7 @@ class AddressBook {
         container.innerHTML = "";
 
         this.contacts.forEach(contact => {
+            //This will create a new contact card //
             let newContact = document.createElement("div");
             newContact.classList.add("contact");
             newContact.innerHTML =
@@ -57,11 +58,13 @@ class AddressBook {
             container.appendChild(newContact);
 
         });
+        // Adds a click event to all trashCan-circle elements
         let trashIcon = document
             .querySelectorAll(".trashCan-circle");
         for (let i = 0; i < trashIcon.length; i++) {
             trashIcon[i].addEventListener("click", () => {
-                console.log("I've been clicked!")
+                addressBook.deleteAt(i);
+                addressBook.display();
             }, false);
         };
     }
@@ -91,13 +94,10 @@ document
         let relation = inputs[3].value;
         addressBook.add(new Contact(name, email, phone, relation));
         addressBook.display();
-        console.log(addressBook);
     });
 
-window.onload = addressBook.display();
 
 
 
 
-
-
+    window.onload = addressBook.display();
