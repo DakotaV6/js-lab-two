@@ -1,5 +1,6 @@
 "use strict";
 
+// Creating Address Book
 class AddressBook {
     constructor() {
         this.contacts = [
@@ -36,6 +37,7 @@ class AddressBook {
     }
 }
 
+// Establishes Contact
 class Contact {
     constructor(name, email, phone, relation) {
         this.name = name;
@@ -45,6 +47,7 @@ class Contact {
     }
 }
 
+// Initializes Address Book to variable
 const addressBook = new AddressBook();
 
 while (true) {
